@@ -1,0 +1,284 @@
+@charset "UTF-8";
+/* Reset simples */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Variáveis CSS (Melhor para temas e consistência) */
+:root {
+    --primary-color: #0078d7; /* Azul padrão */
+    --secondary-color: #005ea6; /* Azul escuro para hover/destaque */
+    --text-color: #333; /* Cor principal do texto */
+    --light-text-color: #f0f0f0; /* Cor do texto em fundos escuros */
+    --background-color: #f9f9f9; /* Cor de fundo principal */
+    --header-bg-color: #eee; /* Cor de fundo do cabeçalho */
+    --nav-bg-color: #444; /* Cor de fundo da navegação */
+    --section-padding: 2rem 1rem; /* Padding padrão para seções */
+    --border-radius: 8px; /* Borda arredondada padrão */
+    --font-main: 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+}
+
+
+/* Tipografia padrão */
+body {
+    font-family: var(--font-main);
+    font-size: 16px;
+    line-height: 1.5;
+    color: var(--text-color);
+    background-color: var(--background-color);
+}
+
+/* Container principal - centraliza o conteúdo */
+.container {
+    width: 100%;
+    max-width: 1200px; /* Largura máxima para desktops */
+    margin: 0 auto; /* Centraliza o container */
+    padding: var(--section-padding); /* Padding padrão para as laterais */
+}
+
+/* Links */
+a {
+    color: var(--primary-color);
+    text-decoration: none;
+}
+a:hover {
+    text-decoration: underline;
+}
+
+/* Botões */
+.button {
+    display: inline-block;
+    padding: 0.6rem 1.2rem;
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+.button:hover {
+    background-color: var(--secondary-color);
+}
+/* --- ESTILOS DO CABEÇALHO (HEADER) --- */
+header {
+    background-color: var(--header-bg-color);
+    padding: 1.5rem 1rem;
+    display: flex; /* Novo: para alinhar título e botão */
+    justify-content: space-between; /* Novo: coloca um na esquerda e outro na direita */
+    align-items: center; /* Novo: alinha verticalmente */
+}
+
+header h1 {
+    font-size: 2.2em;
+    margin-bottom: 0.3rem;
+    color: var(--text-color);
+}
+
+header p {
+    font-size: 1.1em;
+    color: var(--text-color);
+}
+
+/* --- BOTÃO HAMBÚRGUER (MENU TOGGLE) --- */
+#menu-toggle {
+    display: block;
+    background: none;
+    border: none;
+    color: var(--primary-color);
+    font-size: 2rem;
+    cursor: pointer;
+    padding: 0.5rem;
+    z-index: 1000; /* Garante que fique acima de tudo */
+}
+
+/* --- NAVEGAÇÃO (NAV) - Estilo Mobile (Padrão: Oculto) --- */
+nav {
+    background-color: var(--nav-bg-color);
+    padding: 1rem 0;
+    /* Para o mobile-first, o menu estará 'oculto' por padrão */
+    /* Ele será mostrado via JavaScript */
+    max-height: 0; /* Começa oculto */
+    overflow: hidden; /* Esconde o conteúdo que transborda */
+    transition: max-height 0.3s ease-out; /* Transição para abertura/fechamento */
+}
+
+/* Classe que será adicionada/removida pelo JavaScript */
+nav.active {
+    max-height: 300px; /* Altura máxima para mostrar o menu (ajuste se precisar de mais) */
+}
+
+nav ul {
+    list-style: none; /* Remove marcadores de lista */
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column; /* Itens empilhados verticalmente */
+    align-items: center; /* Centraliza itens horizontalmente */
+}
+
+nav ul li {
+    width: 100%; /* Cada item ocupa a largura total */
+    text-align: center;
+}
+
+nav ul li a {
+    display: block; /* Link ocupa toda a área do li */
+    padding: 1rem; /* Padding maior para cliques mais fáceis */
+    color: var(--light-text-color); /* Cor do texto no menu escuro */
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+}
+
+nav ul li a:hover {
+    background-color: var(--secondary-color); /* Cor de fundo ao passar o mouse */
+}
+
+/* --- ESTILOS DA SEÇÃO "SOBRE MIM" e IMAGEM DE PERFIL --- */
+#about {
+    text-align: center; /* Centraliza o texto dentro da seção */
+    padding: var(--section-padding); /* Usa o padding global do container */
+}
+
+.profile-image-container {
+    width: 150px; /* Tamanho da imagem */
+    height: 150px;
+    margin: 1.5rem auto; /* Centraliza a div da imagem e dá um espaçamento */
+    border-radius: 50%; /* Torna a div e o overflow da imagem redondos */
+    overflow: hidden; /* Corta o que passar da borda circular */
+    border: 3px solid var(--primary-color); /* Borda em volta da foto */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra suave */
+}
+
+.profile-image-container img {
+    width: 100%; /* Faz a imagem preencher o container */
+    height: 100%;
+    object-fit: cover; /* Garante que a imagem preencha sem distorcer, cortando se necessário */
+    display: block; /* Remove espaço extra abaixo da imagem */
+}
+
+#about h2 {
+    font-size: 2em;
+    margin-bottom: 1rem;
+    color: var(--primary-color);
+}
+
+#about h3 {
+    font-size: 1.4em;
+    margin-top: 1.5rem;
+    margin-bottom: 0.8rem;
+    color: var(--text-color);
+}
+
+#about p {
+    margin-bottom: 1rem;
+    line-height: 1.6;
+    text-align: justify; /* Justifica o texto para melhor leitura */
+}
+
+#about ul {
+    list-style: none; /* Remove marcadores */
+    padding: 0;
+    margin: 1rem 0 2rem 0;
+    text-align: left; /* Alinha o texto da lista à esquerda */
+    max-width: 600px; /* Limita a largura da lista para melhor legibilidade */
+    margin-left: auto; /* Centraliza a lista */
+    margin-right: auto;
+}
+
+#about ul li {
+    background-color: #e6f2ff; /* Fundo suave para os itens da lista */
+    margin-bottom: 0.5rem;
+    padding: 0.7rem 1rem;
+    border-radius: var(--border-radius);
+    font-size: 1.1em;
+    color: var(--secondary-color);
+}
+
+/* --- ESTILOS DAS OUTRAS SEÇÕES (SKILLS, PROJECTS, CONTACT) --- */
+section {
+    padding: var(--section-padding);
+    margin-bottom: 2rem; /* Espaçamento entre as seções */
+}
+
+section h2 {
+    font-size: 2em;
+    text-align: center;
+    margin-bottom: 1.5rem;
+    color: var(--primary-color);
+}
+
+/* Estilos para a lista de habilidades */
+#skills ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-wrap: wrap; /* Permite que os itens quebrem para a próxima linha */
+    justify-content: center; /* Centraliza os itens */
+    gap: 1rem; /* Espaçamento entre os itens */
+}
+
+#skills ul li {
+    background-color: var(--header-bg-color); /* Fundo claro para o item de habilidade */
+    padding: 0.8rem 1.2rem;
+    border-radius: var(--border-radius);
+    font-size: 1.1em;
+    color: var(--text-color);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    display: flex; /* Para alinhar ícone e texto */
+    align-items: center; /* Alinha verticalmente ícone e texto */
+    gap: 0.5rem; /* Espaçamento entre ícone e texto */
+}
+
+#skills ul li i {
+    color: var(--primary-color); /* Cor do ícone */
+    font-size: 1.3em;
+}
+
+
+/* --- ESTILOS DO RODAPÉ (FOOTER) --- */
+footer {
+    background-color: var(--nav-bg-color); /* Cor escura para o rodapé */
+    color: var(--light-text-color);
+    text-align: center;
+    padding: 2rem 1rem;
+}
+
+footer h2 {
+    color: var(--light-text-color);
+    font-size: 1.8em;
+    margin-bottom: 0.8rem;
+}
+
+footer p {
+    margin-bottom: 1rem;
+}
+
+footer ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex; /* Para alinhar os links horizontalmente */
+    justify-content: center; /* Centraliza os links */
+    gap: 1.5rem; /* Espaçamento entre os links */
+}
+
+footer ul li a {
+    color: var(--light-text-color); /* Links brancos */
+    font-size: 1.1em;
+    transition: color 0.3s ease;
+}
+
+footer ul li a:hover {
+    color: var(--primary-color); /* Mudar cor ao passar o mouse */
+}
+
+/* --- CLASSE PARA ESCONDER ELEMENTOS NO MOBILE --- */
+/* Essa classe será usada no NAV para ele iniciar oculto */
+.hidden-on-mobile {
+    /* No CSS Mobile First, o padrão é ser visível. */
+    /* Esta classe pode ser usada para esconder algo que só aparece no desktop, por exemplo */
+    /* Para o NAV, vamos controlar via JS com max-height e overflow hidden */
+}
